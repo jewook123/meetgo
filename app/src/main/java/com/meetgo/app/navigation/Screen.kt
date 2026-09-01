@@ -12,10 +12,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Screen(val route: String) {
     data object Onboarding : Screen("onboarding")
     data object Login : Screen("login")
+    data object SignUp : Screen("signup")
     data object ProfileSetup : Screen("profile_setup")
     data object Discover : Screen("discover")
     data object Matches : Screen("matches")
     data object MyProfile : Screen("my_profile")
+
+    data object ProfileDetail : Screen("profile_detail/{userId}") {
+        const val ARG_USER_ID = "userId"
+        fun createRoute(userId: String) = "profile_detail/$userId"
+    }
 
     data object Chat : Screen("chat/{matchId}") {
         const val ARG_MATCH_ID = "matchId"
